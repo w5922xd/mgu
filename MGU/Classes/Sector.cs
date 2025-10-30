@@ -294,7 +294,12 @@ namespace MGU
             for (int l = 0; l < nroflocations; l++)
             {
                 lindex = currentGame.GetLocationIconIndex(currentGame.location[this.location[l]]);
-                e.Graphics.DrawImage(currentGame.Locations.Images[lindex], (currentGame.sectorsize / 2) - ((float)(currentGame.sectorsize / 7.5) * (nroflocations / 2)) + (float)(currentGame.sectorsize / 8) * l, currentGame.sectorsize / 2 - (float)(currentGame.sectorsize / 15), (float)(currentGame.sectorsize / 7.5), (float)(currentGame.sectorsize / 7.5));
+
+                // Check for valid location icon 
+                if (lindex >= 0 && lindex < currentGame.Locations.Images.Count)
+                {
+                    e.Graphics.DrawImage(currentGame.Locations.Images[lindex], (currentGame.sectorsize / 2) - ((float)(currentGame.sectorsize / 7.5) * (nroflocations / 2)) + (float)(currentGame.sectorsize / 8) * l, currentGame.sectorsize / 2 - (float)(currentGame.sectorsize / 15), (float)(currentGame.sectorsize / 7.5), (float)(currentGame.sectorsize / 7.5));
+                }                
             }
 
             //DrawFocus(e.Graphics);
